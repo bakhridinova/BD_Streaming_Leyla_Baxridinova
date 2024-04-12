@@ -2,12 +2,14 @@ package com.epam.uni;
 
 import com.epam.uni.utils.DataProcessor;
 import com.epam.uni.utils.DataReader;
-import org.apache.spark.sql.*;
-import org.apache.spark.sql.streaming.StreamingQuery;
-import org.apache.spark.sql.types.StructType;
+import org.apache.spark.sql.SparkSession;
 
-import static com.epam.uni.utils.Constants.*;
-import static org.apache.spark.sql.functions.*;
+import static com.epam.uni.utils.Constants.PATH_TO_CHECKPOINT_LOCATION;
+import static com.epam.uni.utils.Constants.PATH_TO_OUTPUT_DIRECTORY;
+import static com.epam.uni.utils.Constants.PATH_TO_RECEIPT_RESTAURANTS_DATASET_DIRECTORY;
+import static com.epam.uni.utils.Constants.PATH_TO_WEATHER_DATASET_DIRECTORY;
+import static com.epam.uni.utils.Constants.SPARK_SESSION_APPLICATION_NAME;
+import static com.epam.uni.utils.Constants.SPARK_SESSION_MASTER_URL;
 
 public class StreamingApplication {
     private final DataReader dataReader;
@@ -15,8 +17,8 @@ public class StreamingApplication {
 
     public StreamingApplication() {
         SparkSession session = SparkSession.builder()
-            .appName("spark practice")
-            .master("local[*]")
+            .appName(SPARK_SESSION_APPLICATION_NAME)
+            .master(SPARK_SESSION_MASTER_URL)
             .getOrCreate();
 
         dataReader = new DataReader(session);
