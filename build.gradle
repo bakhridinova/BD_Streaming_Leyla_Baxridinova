@@ -10,8 +10,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    implementation 'org.apache.spark:spark-core_2.12:3.1.2'
+    implementation 'org.apache.spark:spark-sql_2.12:3.1.2'
+
+    testImplementation 'junit:junit:4.13.2'
 }
 
 test {
