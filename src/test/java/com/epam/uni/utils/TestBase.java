@@ -15,6 +15,8 @@ public class TestBase {
     DataReader dataReader;
     Dataset<Row> receipts;
     Dataset<Row> weather;
+    Dataset<Row> joinData;
+    Dataset<Row> calculatedData;
 
     @Before
     public void setUp() {
@@ -27,8 +29,12 @@ public class TestBase {
         dataReader = new DataReader(session);
 
         receipts = dataReader
-            .readReceiptsData(PATH_TO_TEST_RECEIPT_RESTAURANTS_DATASET_DIRECTORY);
+            .readReceiptsDataFor2022(PATH_TO_TEST_RECEIPT_RESTAURANTS_DATASET_DIRECTORY);
         weather = dataReader
-            .readWeatherData(PATH_TO_TEST_WEATHER_DATASET_DIRECTORY);
+            .readWeatherDataFor2022(PATH_TO_TEST_WEATHER_DATASET_DIRECTORY);
+
+        joinData = dataProcessor.joinAndFilterData(receipts, weather);
+
+        calculatedData = dataProcessor.calculateFields(joinData);
     }
 }

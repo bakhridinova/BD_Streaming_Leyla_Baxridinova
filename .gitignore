@@ -4,6 +4,11 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+src/main/resources/result/streaming/checkpoint
+src/main/resources/result/streaming/_spark_metadata
+/src/main/resources/result/**/*.crc
+/src/main/resources/result/_SUCCESS
+
 ### IntelliJ IDEA ###
 .idea/
 *.iws

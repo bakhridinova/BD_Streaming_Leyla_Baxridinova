@@ -15,6 +15,7 @@ dependencies {
 
     implementation 'org.apache.spark:spark-core_2.12:3.1.2'
     implementation 'org.apache.spark:spark-sql_2.12:3.1.2'
+    implementation 'org.apache.spark:spark-streaming_2.12:3.1.2'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
