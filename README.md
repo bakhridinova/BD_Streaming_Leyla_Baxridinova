@@ -1,6 +1,32 @@
+<!-- TOC -->
+* [Spark Streaming Application](#spark-streaming-application)
+  * [Requirements](#requirements)
+  * [Directories](#directories)
+  * [Classes](#classes)
+    * [1. DataReader](#1-datareader)
+    * [2. DataProcessor](#2-dataprocessor)
+    * [3. StreamingApplication](#3-streamingapplication)
+  * [Usage](#usage)
+  * [Conclusion](#conclusion)
+<!-- TOC -->
+
 # Spark Streaming Application
 
 This application is a Spark-based data processing pipeline that reads, processes, and writes data streams. It's designed to handle large volumes of data in real-time, making it ideal for applications that require immediate insights.
+
+## Requirements
+
+- Java 11: This application requires Java 11 to run. Make sure you have it installed and properly configured on your machine
+
+## Directories
+
+The application stores its results in two main directories:
+
+- `src/main/resources/result`: This directory is used by the `prepareData` method. It creates CSV files in this directory which contain the processed data.
+![img.png](result.png)
+
+- `src/main/resources/result/streaming`: This directory is used by the `streamData` method. It reads the CSV files from the `src/main/resources/result` directory, applies additional logic, and creates new CSV files in this directory.
+![img_1.png](streaming.png)
 
 ## Classes
 
@@ -36,7 +62,7 @@ The `StreamingApplication` class is the main class that orchestrates the data pr
 `streamData()`: This method handles the streaming of data. It performs the following steps:
  - Reads a static DataFrame from the output directory.
  - Reads the streaming input data using the schema from the static DataFrame.
- - Applies additional logic to the input data using the `DataProcessor`, adding a new column `promo_cold_drinks` which is set to TRUE if the average temperature is greater than 25.0, and FALSE otherwise.
+ - Applies additional logic to the input data using the `DataProcessor`, adding a new column `promo_cold_drinks` which is set to `true` if the average temperature is greater than 25.0, and `false` otherwise.
  - Writes the processed data to the streaming output directory using the `DataReader`, specifying a checkpoint location for the streaming query.
 
 ## Usage
