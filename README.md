@@ -17,16 +17,17 @@ This application is a Spark-based data processing pipeline that reads, processes
 ## Requirements
 
 - Java 11: This application requires Java 11 to run. Make sure you have it installed and properly configured on your machine
+  ![img.png](src/main/resources/images/java11.png)
 
 ## Directories
 
 The application stores its results in two main directories:
 
 - `src/main/resources/result`: This directory is used by the `prepareData` method. It creates CSV files in this directory which contain the processed data.
-![img.png](result.png)
+![img.png](src/main/resources/images/result.png)
 
 - `src/main/resources/result/streaming`: This directory is used by the `streamData` method. It reads the CSV files from the `src/main/resources/result` directory, applies additional logic, and creates new CSV files in this directory.
-![img_1.png](streaming.png)
+![img_1.png](src/main/resources/images/streaming.png)
 
 ## Classes
 
